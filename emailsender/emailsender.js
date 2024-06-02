@@ -1,29 +1,23 @@
-// Import the nodemailer module
 const nodemailer = require('nodemailer');
-
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'roselineogwunte@gmail.com', 
+    user: 'test@gmail.com', 
     pass: 'password', 
   },
 });
 
-
 const mailOptions = {
-  from: 'roselineogwunte@gmail.com', 
-  to: 'rohzalbert@gmail.com', 
-  subject: 'Test Email', 
-  text: 'This is a test email from Node.js!', 
-  html: '<p>This is a <b>test email</b> from <i>Node.js</i>!</p>', // HTML body
+  from: 'test@gmail.com', 
+  to: 'example@gmail.com',
+  subject: 'Test Email from Node.js', 
+  text: 'Hello, this is a test email sent from Node.js using Nodemailer!', 
 };
 
-// Sending email
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
-    console.error('Error sending email:', error);
-  } else {
-    console.log('Email sent:', info.response);
+    return console.log(error);
   }
+  console.log('Email sent: ' + info.response);
 });
